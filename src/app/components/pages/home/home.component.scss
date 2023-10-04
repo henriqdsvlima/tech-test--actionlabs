@@ -1,0 +1,34 @@
+.exchange_rate {
+  @apply sm:flex;
+  @apply sm:flex-col;
+  @apply sm:justify-center;
+
+  &_form {
+    @apply sm:flex;
+    @apply sm:flex-col;
+    @apply sm:justify-center;
+
+    &--title {
+      @apply text-center;
+      @apply text-[#07B0FB]
+    }
+
+    &--input {
+      @apply bg-[#07B0FB];
+      @apply bg-[#f0f0f5];
+      @apply rounded-sm;
+      @apply p-2;
+      @apply m-2;
+    }
+
+    &--button {
+      @apply bg-[#07B0FB];
+      @apply text-[white];
+      @apply rounded-3xl;
+      @apply p-1;
+      @apply m-1;
+      @apply p-3
+    }
+
+  }
+}
