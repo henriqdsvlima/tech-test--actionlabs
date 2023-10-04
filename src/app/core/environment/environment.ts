@@ -4,5 +4,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'your-api'
+  apiUrl: 'https://api.exchangerate-api.com/v4/latest/BRL'
 };
