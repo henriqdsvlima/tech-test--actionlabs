@@ -5,14 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { TokenInterceptor } from './core/token/token.interceptor';
-import { CurrencyConversionPipe } from './core/pipes/currency-conversion/currency-conversion.pipe';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CurrencyConversionPipe
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

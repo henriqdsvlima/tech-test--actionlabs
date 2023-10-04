@@ -6,9 +6,8 @@ import { HomeComponent } from './components/pages/home/home.component';
 const routes: Routes = [
   {
     path: '',
-    component:HomeComponent,
-    loadChildren: () => import('../app/app.module').then(m => m.AppModule)
-  }
+    component: HomeComponent,
+  },
 ];
 
 @NgModule({

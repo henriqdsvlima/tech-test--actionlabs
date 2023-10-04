@@ -1,0 +1,10 @@
+.footer {
+  @apply w-full;
+  @apply bg-[#07B0FB];
+  @apply text-[white];
+  @apply flex;
+  @apply justify-center;
+  @apply p-2;
+  @apply fixed;
+  @apply bottom-0;
+}
