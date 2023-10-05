@@ -13,10 +13,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
     // Clonando a requisição original e modificando-a para incluir o header 'app-id'
     const clonedReq = req.clone({
-      setHeaders: {
-        'app-id': 'your-app-id', // opcional - caso a API forneça
-        'Authorization': 'Bearer your-token-here'
-      }
+      params: req.params.set('apiKey', 'RVZG0GHEV2KORLNA')
     });
 
     // Passando a requisição clonada e modificada ao invés da original

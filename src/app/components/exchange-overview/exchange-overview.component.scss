@@ -1,0 +1,39 @@
+.exchange_overview {
+  @apply flex flex-col;
+
+  @apply sm:max-w-sm md:max-w-md;
+
+  &__title {
+    @apply flex flex-row;
+    @apply font-bold;
+    @apply font-semibold;
+    @apply text-[18px];
+    @apply w-[180px];
+
+    &--date {
+      @apply text-[14px];
+      @apply w-[150px];
+      @apply p-0;
+    }
+
+    &--currency {
+      @apply w-[50%];
+      @apply flex justify-end;
+      @apply text-[24px];
+      @apply font-bold;
+      @apply text-[#07B0FB];
+    }
+  }
+
+
+
+  &--rate {
+    @apply bg-[#e8f8ff];
+    @apply font-bold;
+    @apply text-[32px];
+    @apply text-[#07B0FB];
+    @apply flex justify-center;
+    @apply p-4;
+    @apply m-4;
+  }
+}

@@ -12,37 +12,25 @@ import { ApiError, ApiErrorType } from '../responses/api-error';
 export class ApiService {
 
   // Base URL for the API. Update this as per your API endpoint.
-  private baseUrl = environment.apiUrl;
+  private baseUrl = environment.DAILY_RATE_EXCHANGE_API_URL;
+
+
 
   constructor(private http: HttpClient) { }
 
   // Get one item by ID
-  getOne<T>(endpoint: string, id: number | string): Observable<ApiResponse<T>> {
-    return this.http.get<ApiResponse<T>>(`${this.baseUrl}${endpoint}/${id}`).pipe(
+  getCurrentRateExchange<T>(fromSymbol: string, toSymbol: string | undefined): Observable<ApiResponse<T>> {
+    return this.http.get<ApiResponse<T>>(`${this.baseUrl}${fromSymbol}/${toSymbol}`).pipe(
       map((data) => data),
       catchError(this.handleError)
-    );
+    )
   }
 
   // Get a list of items
-  getAll<T>(endpoint: string): Observable<ApiListResponse<T>> {
+  getDailyRateExchange<T>(endpoint: string): Observable<ApiListResponse<T>> {
     return this.http.get<ApiListResponse<T>>(`${this.baseUrl}${endpoint}`);
   }
 
-  // Create an item
-  create<T>(endpoint: string, data: T): Observable<ApiResponse<T>> {
-    return this.http.post<ApiResponse<T>>(`${this.baseUrl}${endpoint}`, data);
-  }
-
-  // Update an item
-  update<T>(endpoint: string, id: number | string, data: T): Observable<ApiResponse<T>> {
-    return this.http.put<ApiResponse<T>>(`${this.baseUrl}${endpoint}/${id}`, data);
-  }
-
-  // Delete an item
-  delete(endpoint: string, id: number | string): Observable<ApiResponse<void>> {
-    return this.http.delete<ApiResponse<void>>(`${this.baseUrl}${endpoint}/${id}`);
-  }
 
 
   private handleError(error: HttpErrorResponse): Observable<never> {

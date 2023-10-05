@@ -6,5 +6,7 @@ export interface ApiError {
 }
 
 export enum ApiErrorType {
- err1 = 'type api error here'
+  err1 = 'Unauthorized',
+  err2 = 'Forbidden',
+  err3 = 'Not Found'
 }

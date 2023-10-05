@@ -1,0 +1,28 @@
+.accordion {
+  &_header {
+    @apply container;
+    @apply m-2;
+    @apply flex justify-between;
+  }
+
+  &_body {
+    @apply flex justify-around;
+
+  }
+
+  .exchange_rate_overview {
+    border: 1px solid red;
+    @apply flex;
+    @apply flex-wrap;
+    @apply justify-between p-2;
+
+    &-title {
+      @apply text-gray-600;
+      @apply mb-2;
+    }
+  }
+}
+
+
+
+/* Classe para esconder o corpo do acordeão */

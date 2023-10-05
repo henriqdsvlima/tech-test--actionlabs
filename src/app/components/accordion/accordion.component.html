@@ -1,0 +1,53 @@
+<div class="accordion" *ngFor="let item of items; let i = index">
+  <div class="accordion_header m-2 flex justify-between" (click)="toggle(i)">
+    <h2 class="text-xl inline-block mr-4">Last 30 Days</h2>
+    <button
+      title="show more"
+      class="group cursor-pointer active:scale-100 duration-200 inline-block"
+      (click)="toggle(i)"
+    >
+      <span
+        class="group cursor-pointer active:scale-100 duration-200 inline-block"
+        >{{ activeIndex !== i ? "+" : "-" }}</span
+      >
+    </button>
+  </div>
+  <div class="accordion_body container" [class.hidden]="activeIndex !== i">
+    <div class="bg-white shadow-2xl rounded-lg">
+      <p class="accordion_body-title">
+        <span class="font-bold"> {{ item.date }}</span>
+      </p>
+      <div class="exchange_rate_overview">
+        <div class="mb-4">
+          <p class="exchange_overview-title">
+            <span class="font-bold">Open:</span> {{ item.open }}
+          </p>
+          <p class="exchange_overview-title">
+            <span class="font-bold">Close:</span> {{ item.close }}
+          </p>
+
+          <p class="exchange_overview-title">
+            <span class="font-bold">Close diff(%): </span>
+            <span
+              [ngClass]="{
+                'text-green-500': closeDiff > 0,
+                'text-red-500': closeDiff < 0
+              }"
+            >
+              {{ closeDiff }}%
+            </span>
+          </p>
+        </div>
+
+        <div class="mb-4">
+          <p class="exchange_overview-title">
+            <span class="font-bold">High:</span> {{ item.high }}
+          </p>
+          <p class="exchange_overview-title">
+            <span class="font-bold">Low:</span> {{ item.low }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

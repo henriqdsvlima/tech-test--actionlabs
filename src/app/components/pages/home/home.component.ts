@@ -15,12 +15,12 @@ export class HomeComponent implements OnInit {
     throw new Error('Method not implemented.');
   }
 
-  constructor(private apiService:ApiService) {
+  constructor(private apiService: ApiService) {
 
   }
 
   getAllData() {
-    return this.apiService.getAll<any>('articles').subscribe(response => {
+    return this.apiService.getDailyRateExchange<any>('articles').subscribe(response => {
       if (response.success) {
         this.data = response.data;
       }
