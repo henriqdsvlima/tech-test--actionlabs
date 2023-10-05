@@ -5,8 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { TokenInterceptor } from './core/token/token.interceptor';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/layouts/header/header.component';
+import { FooterComponent } from './components/layouts/footer/footer.component';
+import { ExchangeOverviewComponent } from './components/exchange-overview/exchange-overview.component';
+import { AccordionComponent } from './components/accordion/accordion.component';
+
 
 
 @NgModule({
@@ -19,7 +22,10 @@ import { FooterComponent } from './components/footer/footer.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    //standalone
+    ExchangeOverviewComponent,
+    AccordionComponent
   ],
   providers: [
     HttpClient,
