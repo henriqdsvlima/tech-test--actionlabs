@@ -11,13 +11,12 @@
   }
 
   .exchange_rate_overview {
-    border: 1px solid red;
     @apply flex;
     @apply flex-wrap;
     @apply justify-between p-2;
 
     &-title {
-      @apply text-gray-600;
+      @apply text-blue-400;
       @apply mb-2;
     }
   }

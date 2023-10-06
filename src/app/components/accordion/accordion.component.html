@@ -1,20 +1,21 @@
-<div class="accordion" *ngFor="let item of dailyExchange; let i = index">
-  <div class="accordion_header m-2 flex justify-between" (click)="toggle(i)">
-    <button
-      title="show more"
-      class="group cursor-pointer active:scale-100 duration-200 inline-block"
-      (click)="toggle(i)"
-    >
-      <span
-        class="group cursor-pointer active:scale-100 duration-200 inline-block"
-        >{{ activeIndex !== i ? "+" : "-" }}</span
-      >
-    </button>
-  </div>
-  <div class="accordion_body container" [class.hidden]="activeIndex !== i">
+<span (click)="onLoadDailyExchangeClick()" class="flex justify-between"
+  ><p class="text-[16px] font-semibold leading-loose-[24px] p-2">
+    Last 30 Days
+  </p>
+  <span
+    class="group cursor-pointer active:scale-100 duration-200 inline-block w-6"
+    >{{ !content ? "+" : "-" }}</span
+  >
+</span>
+<hr class="p-3" />
+
+<div class="accordion" *ngFor="let item of dailyExchange">
+  <div class="accordion_body container p-3" *ngIf="content">
     <div class="bg-white shadow-2xl rounded-lg">
       <p class="accordion_body-title">
-        <span class="font-bold"> {{ item.date | date : "dd/MM/yyyy" }}</span>
+        <span class="font-bold text-sky-400/100">
+          {{ item.date | date : "dd/MM/yyyy" }}</span
+        >
       </p>
       <div class="exchange_rate_overview">
         <div class="mb-4">
@@ -22,7 +23,7 @@
             <span class="font-bold">Open:</span> {{ item.open }}
           </p>
           <p class="exchange_overview-title">
-            <span class="font-bold">Close:</span> {{ item.close }}
+            <span class="font-semibold">Close:</span> {{ item.close }}
           </p>
 
           <p class="exchange_overview-title">
@@ -44,4 +45,5 @@
       </div>
     </div>
   </div>
+  <hr *ngIf="content" />
 </div>
