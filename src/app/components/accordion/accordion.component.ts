@@ -12,7 +12,7 @@ import { ApiListResponse } from 'src/app/core/responses/api.models';
   styleUrls: ['./accordion.component.scss'],
   standalone: true
 })
-export class AccordionComponent implements OnInit {
+export class AccordionComponent {
   @Input() dailyExchange: IDailyExchangeRateOverview[] | null = null
   @Input() closeDiff!: string
   @Output() loadDailyExchangeEvent = new EventEmitter<void>();
@@ -22,15 +22,6 @@ export class AccordionComponent implements OnInit {
 
 
   constructor() { }
-
-
-  ngOnInit(): void {
-    console.log('AccordionComponent Initialized');
-    // Lógica de inicialização, se necessário.
-  }
-
-
-
 
   onLoadDailyExchangeClick(): void {
     this.content = !this.content

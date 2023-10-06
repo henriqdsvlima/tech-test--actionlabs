@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.apiService.getCurrentExchangeRate(currencyCode, 'BRL').subscribe(
         (response: ICurrentExchangeRate) => {
           this.currentExchangeRate = response;
-          console.log(this.currentExchangeRate);
+
           this.isLoading = false;
         },
         (error: any) => {
@@ -79,7 +79,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             };
           });
 
-          console.log(this.dailyExchangeRate);
+
           this.isLoading = false;
         },
         (error: any) => {
