@@ -6,7 +6,8 @@ export interface ApiError {
 }
 
 export enum ApiErrorType {
-  err1 = 'Unauthorized',
-  err2 = 'Forbidden',
-  err3 = 'Not Found'
+  Unauthorized = 'Unauthorized',
+  Forbidden = 'Forbidden',
+  NotFound = 'NotFound',
+  GenericError = 'GenericError',
 }

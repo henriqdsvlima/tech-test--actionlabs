@@ -11,6 +11,7 @@
       type="text"
       formControlName="currencyCode"
       placeholder="Enter the currency code"
+      (input)="onInputChange($event)"
     />
     <button
       class="exchange_rate_form--button flex justify-center"
@@ -33,7 +34,9 @@
   <!-- Exibição da taxa de câmbio atual -->
   <section class="exchange_overview" *ngIf="overview">
     <div class="container flex flex-row flex-wrap">
-      <small class="exchange_overview__title">Exchange rate now</small>
+      <small class="exchange_overview__title sm:p-3 whitespace-nowrap"
+        >Exchange rate now</small
+      >
       <small>{{ currentExchangeRate?.lastUpdateAt }}</small>
       <span class="exchange_overview__title--currency">
         {{ currentExchangeRate?.fromSymbol }}/{{
@@ -57,5 +60,6 @@
     *ngIf="dailyExchangeRate"
     [dailyExchange]="dailyExchangeRate | sortDesc : 'date'"
     [closeDiff]="closeDiff.toString()"
+    (loadDailyExchangeEvent)="onSearch()"
   ></app-accordion>
 </main>

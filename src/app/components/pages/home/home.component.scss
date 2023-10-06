@@ -1,16 +1,18 @@
 .exchange_rate {
-  @apply sm:flex;
+  @apply sm:flex md:grid;
   @apply sm:flex-col;
   @apply sm:justify-center;
+  // DESKTOP
+  @apply md:w-full;
 
   &_form {
     @apply sm:flex;
     @apply sm:flex-col;
     @apply sm:justify-center;
+    @apply md:flex md:justify-center;
 
     &--title {
       @apply text-center;
-      @apply text-[#07B0FB]
     }
 
     &--input {

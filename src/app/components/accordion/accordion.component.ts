@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, OnInit, SimpleChanges } from '@angular/core';
+import { AfterContentInit, Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { IDailyExchangeRate, IDailyExchangeRateOverview } from '../../interfaces/exchange-rate';
@@ -15,19 +15,26 @@ import { ApiListResponse } from 'src/app/core/responses/api.models';
 export class AccordionComponent implements OnInit {
   @Input() dailyExchange: IDailyExchangeRateOverview[] | null = null
   @Input() closeDiff!: string
-  activeIndex: number | null = null;
+  @Output() loadDailyExchangeEvent = new EventEmitter<void>();
 
+  activeIndex: number | null = null;
+  content: boolean = false
 
 
   constructor() { }
+
 
   ngOnInit(): void {
     console.log('AccordionComponent Initialized');
     // Lógica de inicialização, se necessário.
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes)
+
+
+
+  onLoadDailyExchangeClick(): void {
+    this.content = !this.content
+    this.loadDailyExchangeEvent.emit();
   }
 
 
