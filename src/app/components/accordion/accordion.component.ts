@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { IExchangeRateOverview } from '../../interfaces/exchange-rate';
+import { IDailyExchangeRate, IDailyExchangeRateOverview } from '../../interfaces/exchange-rate';
+import { ApiListResponse } from 'src/app/core/responses/api.models';
 
 
 @Component({
@@ -12,23 +13,36 @@ import { IExchangeRateOverview } from '../../interfaces/exchange-rate';
   standalone: true
 })
 export class AccordionComponent implements OnInit {
+  @Input() dailyExchange: IDailyExchangeRateOverview[] | null = null
+  @Input() closeDiff!: string
   activeIndex: number | null = null;
-  closeDiff: number = 1.453254
 
-  items: IExchangeRateOverview[] = [{
-    date: '05-10-2023',
-    open: '5.0666',
-    close: '5.0038',
-    high: '5.0689',
-    low: '4.9836'
-  }]
+
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log('AccordionComponent Initialized');
+    // Lógica de inicialização, se necessário.
   }
 
-  toggle(index: any): void {
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes)
+  }
+
+
+
+
+
+  toggle(index: number): void {
     this.activeIndex = this.activeIndex === index ? null : index;
+  }
+
+
+  getCloseDiffClass(closeDiff: number | undefined): string {
+    if (closeDiff === undefined) {
+      return '';  // ou uma classe padrão para quando closeDiff é undefined
+    }
+    return closeDiff > 0 * 100 ? 'text-green-500' : 'text-red-500';
   }
 }

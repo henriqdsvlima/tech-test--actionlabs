@@ -1,17 +1,61 @@
 <main class="exchange_rate">
-  <form class="exchange_rate_form">
+  <!-- Formulário de Pesquisa -->
+  <form
+    class="exchange_rate_form"
+    [formGroup]="searchForm"
+    (ngSubmit)="onSearch()"
+  >
     <p class="exchange_rate_form--title">BRL EXCHANGE RATE</p>
     <input
       class="exchange_rate_form--input"
       type="text"
-      name=""
+      formControlName="currencyCode"
       placeholder="Enter the currency code"
     />
-
-    <button class="exchange_rate_form--button" type="submit">
+    <button
+      class="exchange_rate_form--button flex justify-center"
+      type="submit"
+    >
       Exchange Result
     </button>
   </form>
 
-  <app-exchange-overview></app-exchange-overview>
+  <!-- Mensagem de Carregamento -->
+  <div *ngIf="isLoading" class="loading-message">
+    <p>Loading...</p>
+  </div>
+
+  <!-- Mensagem de Erro -->
+  <div *ngIf="errorMessage" class="error-message">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <!-- Exibição da taxa de câmbio atual -->
+  <section class="exchange_overview" *ngIf="overview">
+    <div class="container flex flex-row flex-wrap">
+      <small class="exchange_overview__title">Exchange rate now</small>
+      <small>{{ currentExchangeRate?.lastUpdateAt }}</small>
+      <span class="exchange_overview__title--currency">
+        {{ currentExchangeRate?.fromSymbol }}/{{
+          currentExchangeRate?.toSymbol
+        }}
+      </span>
+      <small class="exchange_overview__title--date">
+        {{ currentExchangeRate?.lastUpdateAt }}
+      </small>
+    </div>
+    <span class="exchange_overview--rate">
+      {{
+        currentExchangeRate?.exchangeRate
+          | currency : "BRL" : "symbol" : "1.2-2"
+      }}
+    </span>
+  </section>
+
+  <!-- Exibição das taxas de câmbio diárias -->
+  <app-accordion
+    *ngIf="dailyExchangeRate"
+    [dailyExchange]="dailyExchangeRate | sortDesc : 'date'"
+    [closeDiff]="closeDiff.toString()"
+  ></app-accordion>
 </main>

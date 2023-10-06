@@ -1,3 +1,5 @@
+import { ICurrentExchangeRateOverview } from "src/app/interfaces/current-exchange-rate";
+
 // api.models.ts
 export interface ApiResponse<T> {
   data: T;
