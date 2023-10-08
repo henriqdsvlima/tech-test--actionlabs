@@ -116,6 +116,12 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.showOverview()
+    this.apiService.getCurrentExchangeRate('', '').subscribe((data) => {
+      return data = null
+    })
+    this.apiService.getDailyExchangeRateLast30Days('', '').subscribe((data) => {
+      return null
+    })
   }
 
 
